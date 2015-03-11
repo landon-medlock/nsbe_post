@@ -1,4 +1,5 @@
 <%= form_for(@post) do |f| %>
+<div class="form-group">
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -20,6 +21,7 @@
     <%= f.text_field :user_id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Post', :class => 'btn btn-primary' %>
   </div>
+</div>
 <% end %>
