@@ -1,0 +1,7 @@
+<%= render 'header' %>
+
+<% @posts.each do |post| %>
+	<p><%= post.content %></p><br>
+<% end %>
+
+<%= render 'create_post' %>

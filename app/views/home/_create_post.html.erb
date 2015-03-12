@@ -1,11 +1,11 @@
-<%= form_for(@post) do |f| %>
+<%= form_for(@nsbe_post) do |f| %>
 <div class="form-group">
-  <% if @post.errors.any? %>
+  <% if @nsbe_post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@nsbe_post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-      <% @post.errors.full_messages.each do |message| %>
+      <% @nsbe_post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -16,10 +16,7 @@
     <%= f.label 'Post Something' %><br>
     <%= f.text_area :content, :placeholder => 'What is on your mind?' %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
+  	<%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="actions">
     <%= f.submit 'Post', :class => 'btn btn-primary' %>
   </div>
