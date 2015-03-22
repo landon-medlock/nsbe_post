@@ -1,28 +1,28 @@
-<%= render 'home/header' %>
+<div class="container">
+  <%= render 'home/header' %>
+  <% if !@user.name.empty? %>
+      <h3>
+        <%= @user.name %>
+      </h3>
+  <% end %>
 
-<p id="notice"><%= notice %></p>
+  <h3>
+    @<%= @user.user_name %>
+  </h3>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+  <% if !@user.bio.empty? %>
+      <blockquote>
+        <%= @user.bio %>
+      </blockquote>
+  <% end %>
 
-<p>
-  <strong>User name:</strong>
-  <%= @user.user_name %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @user.bio %>
-</p>
-
-<div>
-	<strong>Posts:</strong>
-	<% @user.posts.each do |post| %>
-	<p><%= post.content %></p>
-	<% end %>
+  <div>
+    <strong>Posts:</strong>
+    <% @user.posts.each do |post| %>
+        <p><%= post.content %></p>
+    <% end %>
+  </div>
+  <% if current_user.email==@user.email %>
+      <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-primary' %>
+  <% end %>
 </div>
-
-
-<%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-primary' %> 

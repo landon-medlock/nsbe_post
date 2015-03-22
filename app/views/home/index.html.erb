@@ -1,7 +1,13 @@
-<%= render 'header' %>
-
-<% @posts.each do |post| %>
-	<p><%= post.content %></p><br>
-<% end %>
-
-<%= render 'create_post' %>
+<div class="container">
+  <%= render 'header' %>
+  <div class="col-md-4">
+    <%= render 'user_info' %>
+    <%= render 'create_post' %>
+  </div>
+  <div class="clearfix visible-lg"></div>
+  <div class="col-md-8">
+      <% @posts.each do |post| %>
+          <p><%= link_to "#{post.user.user_name}:", post.user %><%= "#{post.content}" %></p>
+      <% end %>
+  </div>
+</div>
