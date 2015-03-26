@@ -5,5 +5,13 @@
       <span class="badge"><%= current_user.posts.count %></span>
       Posts
     </li>
+    <li class="list-group-item">
+      <span class="badge"><%= current_user.follow_count %></span>
+      Following
+    </li>
+    <li class="list-group-item">
+      <span class="badge"><%= current_user.followers_count %></span>
+      Followers
+    </li>
   </ul>
 </div>
