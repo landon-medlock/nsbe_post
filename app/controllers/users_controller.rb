@@ -38,6 +38,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow
+    @user = User.find(params[:id])
+    current_user.follow(@user)
+    redirect_to :back
+  end
+
+  def unfollow
+    @user = User.find(params[:id])
+    current_user.stop_following(@user)
+    redirect_to :back
+  end
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
