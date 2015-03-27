@@ -1,6 +1,6 @@
 <div class="container">
   <%= render 'home/header' %>
-  <% if !@user.name.empty? %>
+  <% if !@user.name.nil? %>
       <h3>
         <%= @user.name %>
       </h3>
@@ -10,7 +10,7 @@
     @<%= @user.user_name %>
   </h3>
 
-  <% if !@user.bio.empty? %>
+  <% if !@user.bio.nil? %>
       <blockquote>
         <%= @user.bio %>
       </blockquote>
@@ -18,10 +18,15 @@
 
   <div>
     <strong>Posts:</strong>
+    <% if @user.posts.empty? %>
+      <p> You haven't posted anything yet. </p>
+    <% end %>
     <% @user.posts.each do |post| %>
         <p><%= post.content %></p>
     <% end %>
   </div>
+  <br/>
+  <br/>
   <% if current_user.email==@user.email %>
       <%= link_to 'Edit', edit_user_path(@user), :class => 'btn btn-primary' %>
   <% end %>
