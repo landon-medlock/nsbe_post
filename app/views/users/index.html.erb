@@ -12,11 +12,13 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td>@<%= link_to "#{user.user_name}", user %></td>
-        <% if current_user.following?(user) %>
-          <td><%= link_to 'Unfollow', unfollow_user_path(user) %></td>
-        <% else %>
-          <td><%= link_to 'Follow', follow_user_path(user) %></td>
+        <% if current_user.email!=user.email %>
+          <td>@<%= link_to "#{user.user_name}", user %></td>
+          <% if current_user.following?(user) %>
+            <td><%= link_to 'Unfollow', unfollow_user_path(user) %></td>
+          <% else %>
+            <td><%= link_to 'Follow', follow_user_path(user) %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
